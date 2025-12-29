@@ -5,6 +5,6 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 from cinema.urls import router
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("cinema/", include((router.urls, "cinema"))),
+    path("api/admin/", admin.site.urls),
+    path("api/cinema/", include((router.urls, "cinema"))),
 ] + debug_toolbar_urls()
