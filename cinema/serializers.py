@@ -33,6 +33,18 @@ class MovieSerializer(serializers.ModelSerializer):
         read_only_fields = ("id",)
 
 
+class MovieListSerializer(MovieSerializer):
+    genres = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field="name"
+    )
+    actors = serializers.SerializerMethodField()
+
+    def get_actors(self, obj):
+        return [f"{a.first_name} {a.last_name}" for a in obj.actors.all()]
+
+
 class MovieSessionSerializer(serializers.ModelSerializer):
     movie = MovieSerializer(many=False)
     cinema_hall = CinemaHallSerializer(many=False)
