@@ -1,6 +1,12 @@
 from rest_framework import serializers
 
-from cinema.models import CinemaHall, Genre, Actor, Movie, MovieSession
+from cinema.models import (
+    CinemaHall,
+    Genre,
+    Actor,
+    Movie,
+    MovieSession
+)
 
 
 class CinemaHallSerializer(serializers.ModelSerializer):
